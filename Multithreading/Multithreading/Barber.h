@@ -9,15 +9,15 @@ using namespace std::chrono_literals;
 
 namespace Barber
 {
-	int numWaiting;
-	int numServed;
+	int numWaiting;//number in the queue
+	int numServed;//how many have been served
 	std::mutex m;
 	std::condition_variable cv;
-	bool q = false;
+	bool q = false;//true if the user wants to quit
 
 	void client()
 	{
-		while (!q)
+		while (!q)//while the user doesn't want to quit
 		{
 			//sleep for 1 or 2 seconds
 			std::this_thread::sleep_for(1s*(rand() % 2 + 1));
